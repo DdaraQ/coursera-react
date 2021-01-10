@@ -31,17 +31,20 @@ class Dishdetail extends Component {
 
     renderComments(dish) {
 
-        const comments = dish.comments.map((comment) => {
-            return (
-                <li>
-                    {comment.comment}<br /><br />
-                    -- {comment.author}, {comment.date}<br /><br />
-                </li>                    
-                
-            );
-        });
+        
 
-        if (dish.comments != null) {
+        if (dish != null) {
+
+            const comments = dish.comments.map((comment) => {
+                return (
+                    <li>
+                        {comment.comment}<br /><br />
+                        -- {comment.author}, {comment.date}<br /><br />
+                    </li>                    
+                    
+                );
+            });
+
             return (
                 <div>
                     {comments}
@@ -57,10 +60,12 @@ class Dishdetail extends Component {
     render() {
 
         return (
-            <div className="row">
-                <div className="col-12 col-xs-12 col-sm-12 col-md-5 m-1">{this.renderDishDetail(this.props.selectedDish)}</div> 
-                <div className="col-12 col-xs-12 col-sm-12 col-md-5 m-1"><h4>Comments</h4><ul className="list-unstyled">{this.renderComments(this.props.selectedDish)}</ul></div>
-            </div>            
+            <div className="container">            
+                <div className="row">
+                    <div className="col-12 col-xs-12 col-sm-12 col-md-5 m-1">{this.renderDishDetail(this.props.dish)}</div> 
+                    <div className="col-12 col-xs-12 col-sm-12 col-md-5 m-1"><h4>Comments</h4><ul className="list-unstyled">{this.renderComments(this.props.dish)}</ul></div>
+                </div>  
+            </div>          
         );
     };
 
